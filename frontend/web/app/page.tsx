@@ -279,7 +279,7 @@ export default function SwimTrackDashboard() {
 
   const loadHistory = async () => {
     try {
-      const res = await fetch("http://127.0.0.1:8000/sessions/history");
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/sessions/history");
       const data = await res.json();
       setHistoryData(data);
     } catch (e) {
@@ -340,7 +340,7 @@ export default function SwimTrackDashboard() {
     setSavingLive(true);
     const mins = Math.max(1, Number((elapsedMs / 60000).toFixed(1)));
     try {
-      const res = await fetch("http://127.0.0.1:8000/sessions/log", {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/sessions/log", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -372,7 +372,7 @@ export default function SwimTrackDashboard() {
       : { emri: authName, email: authEmail, fjalekalimi: authPassword, roli: authRole };
 
     try {
-      const res = await fetch(`http://127.0.0.1:8000${endpoint}`, {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + `"${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -398,7 +398,7 @@ export default function SwimTrackDashboard() {
     e.preventDefault();
     setLoadingPlan(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/planner/generate", {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/planner/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -422,7 +422,7 @@ export default function SwimTrackDashboard() {
     e.preventDefault();
     setLoadingSession(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/sessions/log", {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/sessions/log", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -447,7 +447,7 @@ export default function SwimTrackDashboard() {
     e.preventDefault();
     setLoadingSwolf(true);
     try {
-      const res = await fetch("http://127.0.0.1:8000/analytics/swolf-zones", {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/analytics/swolf-zones", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -473,7 +473,7 @@ export default function SwimTrackDashboard() {
     setLoadingChat(true);
 
     try {
-      const res = await fetch("http://127.0.0.1:8000/ai-coach/chat", {
+      const res = await fetch((process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000") + "/ai-coach/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
