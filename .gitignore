@@ -1,0 +1,15 @@
+# Python & Database
+backend/venv/
+backend/__pycache__/
+*.pyc
+backend/swimtrack.db
+
+# Node.js & Next.js
+frontend/web/node_modules/
+frontend/web/.next/
+frontend/web/out/
+
+# System
+.env
+.DS_Store
+Thumbs.db
